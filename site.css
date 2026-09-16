@@ -59,6 +59,17 @@ button.art-open { width: 100%; padding: 0; border: 0; background: none; color: i
   .hero-intro::before { display: none; }
 }
 
+/* The artist's warm atelier visual is always shown in full, without cover cropping. */
+.profile-visual { display:flex; flex-direction:column; align-items:center; justify-content:center; padding:clamp(24px,3.4vw,52px); height:auto; max-height:none; overflow:visible; background:linear-gradient(135deg,#f1e2cf,#e8cdbd); }
+.profile-visual img { width:min(100%,512px); height:auto; object-fit:contain; object-position:center; box-shadow:0 12px 32px #704a3026; }
+.profile-visual figcaption { margin-top:17px; font-size:10px; line-height:1.9; color:#715b50; text-align:center; }
+.about-hero .detail-visual { max-width:400px; }
+.about-hero .detail-visual figcaption { font:10px/1.9 var(--serif); letter-spacing:.02em; }
+@media(max-width:760px) {
+  .profile-visual { padding:30px 6% 25px; }
+  .profile-visual figcaption { font-size:9px; }
+}
+
 /* Jewelry collection: keep the entire supplied photograph, including lettering. */
 [hidden] { display: none !important; }
 .jewelry-hero { display:grid; grid-template-columns:1fr 1fr; gap:9%; align-items:center; padding-block:30px 80px; }
