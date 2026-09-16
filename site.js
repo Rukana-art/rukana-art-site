@@ -30,7 +30,15 @@ if (artDialog && typeof artDialog.showModal === 'function') {
     image.src = link.querySelector('img').currentSrc || link.querySelector('img').src;
     image.alt = link.querySelector('img').alt;
     artDialog.querySelector('#art-dialog-title').textContent = link.dataset.artTitle;
+    const description = artDialog.querySelector('#jewelry-dialog-description');
+    if (description) description.textContent = link.dataset.artDescription || '';
+    const status = artDialog.querySelector('.jewelry-copy-status');
+    if (status) status.textContent = '';
+    artDialog.classList.remove('is-zoomed');
+    const zoomButton = artDialog.querySelector('.jewelry-zoom');
+    if (zoomButton) { zoomButton.setAttribute('aria-pressed', 'false'); zoomButton.textContent = '細部を拡大'; }
     artDialog.showModal();
+    artDialog.scrollTop = 0;
   }));
   artDialog.querySelector('.dialog-close').addEventListener('click', () => artDialog.close());
   artDialog.addEventListener('click', event => {
@@ -40,6 +48,48 @@ if (artDialog && typeof artDialog.showModal === 'function') {
   });
   artDialog.addEventListener('close', () => lastArtLink?.focus({ preventScroll: true }));
 }
+
+const jewelryFilters = document.querySelector('.jewelry-filters');
+if (artDialog?.classList.contains('jewelry-dialog')) {
+  const zoomButton = document.createElement('button');
+  zoomButton.type = 'button';
+  zoomButton.className = 'jewelry-zoom dialog-close';
+  zoomButton.textContent = '細部を拡大';
+  zoomButton.setAttribute('aria-pressed', 'false');
+  zoomButton.addEventListener('click', () => {
+    const zoomed = artDialog.classList.toggle('is-zoomed');
+    zoomButton.setAttribute('aria-pressed', String(zoomed));
+    zoomButton.textContent = zoomed ? '全体を表示' : '細部を拡大';
+    artDialog.scrollTop = 0;
+  });
+  artDialog.querySelector('.dialog-bar').insertBefore(zoomButton, artDialog.querySelector('.dialog-close'));
+}
+if (jewelryFilters) {
+  jewelryFilters.hidden = false;
+  const cards = [...document.querySelectorAll('.jewelry-card')];
+  jewelryFilters.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
+    const selected = button.dataset.jewelryFilter;
+    jewelryFilters.querySelectorAll('button').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+    cards.forEach(card => { card.hidden = selected !== 'all' && card.dataset.jewelryCategory !== selected; });
+    const count = cards.filter(card => !card.hidden).length;
+    document.querySelector('.collection-count').textContent = selected === 'all' ? `全${count}作品` : `${button.childNodes[0].textContent} · ${count}作品`;
+  }));
+}
+document.querySelector('.jewelry-copy-title')?.addEventListener('click', async () => {
+  const title = artDialog.querySelector('#art-dialog-title');
+  const status = artDialog.querySelector('.jewelry-copy-status');
+  try {
+    await navigator.clipboard.writeText(title.textContent);
+    status.textContent = '作品名をコピーしました。Instagramのメッセージに添えてお使いください。';
+  } catch {
+    const range = document.createRange();
+    range.selectNodeContents(title);
+    const selection = window.getSelection();
+    selection.removeAllRanges();
+    selection.addRange(range);
+    status.textContent = '作品名を選択しました。端末のコピー操作をご利用ください。';
+  }
+});
 
 // A small deterrent, not access control: never disable text selection, browser
 // shortcuts, zoom, or context menus elsewhere on the site.

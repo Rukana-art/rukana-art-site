@@ -58,3 +58,116 @@ button.art-open { width: 100%; padding: 0; border: 0; background: none; color: i
   .hero-intro { padding-top: 0; margin-top: calc(95px + 43vw); margin-bottom: 24px; font-size: 12px; }
   .hero-intro::before { display: none; }
 }
+
+/* Jewelry collection: keep the entire supplied photograph, including lettering. */
+[hidden] { display: none !important; }
+.jewelry-hero { display:grid; grid-template-columns:1fr 1fr; gap:9%; align-items:center; padding-block:30px 80px; }
+.jewelry-intro h1 { font-size:clamp(38px,4.4vw,63px); line-height:1.6; }
+.jewelry-intro .button-row { margin-top:30px; }
+.jewelry-intro .jewelry-signature { font:italic 24px/1.7 var(--display); color:var(--gold); margin-top:44px; }
+.jewelry-hero-photo { background:#fffdf9; padding:14px 14px 0; border:1px solid var(--line); box-shadow:0 20px 55px #71513a12; transform:rotate(1.4deg); }
+.jewelry-hero-photo img { width:100%; height:auto; }
+.jewelry-hero-photo figcaption { display:flex; justify-content:space-between; gap:20px; font-size:11px; padding:18px 5px; color:var(--muted); }
+.jewelry-hero-photo figcaption span:first-child { font:11px/1.8 var(--sans); letter-spacing:.14em; }
+.gallery-switch { display:flex; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+.gallery-switch a { flex:1; text-align:center; padding:18px 10px; font-size:14px; color:var(--muted); }
+.gallery-switch a+a { border-left:1px solid var(--line); }
+.gallery-switch a span { display:block; font:9px/1.8 var(--sans); letter-spacing:.14em; margin-top:4px; }
+.gallery-switch a[aria-current] { color:var(--wine); background:#eee1d9; box-shadow:inset 0 -2px var(--wine); }
+.gallery-switch a:hover { color:var(--wine); background:#f3e7df; }
+.jewelry-collection { padding-top:76px; }
+.collection-note { border-left:2px solid var(--gold); background:#f2e9df; padding:19px 24px; }
+.collection-note p { font-size:12px; line-height:1.9; }
+.collection-note p+p { font-size:11px; color:var(--muted); margin-top:7px; }
+.collection-controls { margin-block:33px 28px; display:flex; align-items:center; justify-content:space-between; gap:20px; }
+.jewelry-filters { display:flex; flex-wrap:wrap; gap:8px; }
+.jewelry-filters button { border:1px solid var(--line); background:transparent; color:var(--ink); font-size:12px; padding:12px 16px; min-height:44px; }
+.jewelry-filters button span { margin-left:10px; font:10px var(--sans); opacity:.75; }
+.jewelry-filters button[aria-pressed="true"] { background:var(--wine); border-color:var(--wine); color:#fffaf3; }
+.jewelry-filters button:hover { border-color:var(--wine); }
+.collection-count { font-size:11px; color:var(--muted); white-space:nowrap; }
+.jewelry-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:54px 26px; align-items:start; }
+.jewelry-card { min-width:0; scroll-margin-top:30px; }
+.jewelry-image { display:flex; align-items:center; justify-content:center; aspect-ratio:3/4; padding:10px; background:#fffdf9; border:1px solid #e3d7ca; transition:box-shadow .25s; }
+.jewelry-image img { width:100%; height:100%; min-height:0; object-fit:contain; }
+.art-open:hover .jewelry-image { box-shadow:0 12px 28px #72534116; }
+.jewelry-caption { padding-top:17px; }
+.jewelry-caption .jewelry-category { margin:0 0 10px; font-size:10px; color:var(--gold); letter-spacing:.08em; }
+.jewelry-category span { font:12px var(--sans); margin-right:12px; }
+.jewelry-caption h3 { font-size:19px; }
+.jewelry-caption p:not(.jewelry-category) { font-size:12px; color:var(--muted); line-height:1.95; margin-top:13px; }
+.jewelry-caption .text-link { margin-top:15px; font-size:11px; gap:12px; }
+.collection-rights { margin-top:50px; border-top:1px solid var(--line); padding-top:21px; }
+.order-story { background:#efe5df; }
+.order-story-grid { display:grid; grid-template-columns:1fr 1fr; gap:9%; align-items:center; }
+.order-story figure { padding:12px 12px 0; background:#fffbf5; border:1px solid var(--line); }
+.order-story figure img { width:100%; height:auto; }
+.order-story figcaption { font-size:10px; color:var(--muted); text-align:center; padding:15px 0; }
+.order-story h2+p, .order-story .button+.small-note { margin-top:22px; }
+.order-story p:not(.eyebrow) { font-size:13px; color:var(--muted); }
+.order-steps { margin-block:26px; padding-block:15px; border-block:1px solid #d5c1b3; }
+.order-steps p { font-size:12px; }
+.order-steps p+p { margin-top:10px; }
+.order-steps span { color:var(--gold); font:12px var(--sans); margin-right:14px; }
+.order-story .button+.small-note { font-size:11px; }
+.jewelry-contact { text-align:center; }
+.jewelry-contact>p:not(.eyebrow) { color:var(--muted); margin-top:24px; font-size:13px; }
+.jewelry-contact .button-row { justify-content:center; margin-top:28px; }
+.jewelry-dialog { width:min(1000px,94vw); }
+.jewelry-dialog .dialog-bar { position:sticky; top:-20px; z-index:2; background:#fffbf4; padding-block:8px; }
+.jewelry-dialog .dialog-image { height:58dvh; }
+.jewelry-dialog.is-zoomed .dialog-image { height:auto; width:100%; }
+.jewelry-dialog .dialog-bar h2 { flex:1; }
+.jewelry-dialog .jewelry-zoom { white-space:nowrap; }
+.jewelry-dialog-copy { max-width:710px; margin:20px auto 0; }
+.jewelry-dialog-copy>p { font-size:12px; }
+.jewelry-dialog-copy .small-note { font-size:11px; margin-top:10px; }
+.jewelry-dialog-copy .button-row { margin-top:20px; justify-content:space-between; gap:14px; }
+.jewelry-copy-title { background:none; border:0; border-bottom:1px solid var(--gold); color:var(--ink); }
+.collection-promo { display:flex; align-items:center; gap:28px; margin-top:35px; padding:16px 26px 16px 16px; background:#fffaf4; border:1px solid #dcc8bb; }
+.collection-promo img { width:110px; height:auto; flex-shrink:0; }
+.collection-promo .eyebrow { margin-bottom:8px; font-size:9px; }
+.collection-promo h3 { font-size:21px; }
+.collection-promo p:not(.eyebrow) { font-size:12px; color:var(--muted); margin-top:7px; }
+.collection-promo>span { margin-left:auto; white-space:nowrap; font-size:12px; color:var(--wine); }
+@media(max-width:1050px) {
+  .collection-controls { align-items:start; flex-direction:column; gap:14px; }
+  .jewelry-grid { gap:38px 18px; }
+  .jewelry-caption h3 { font-size:17px; }
+}
+@media(max-width:760px) {
+  .jewelry-hero { grid-template-columns:1fr; gap:35px; padding-block:23px 53px; }
+  .jewelry-intro h1 { font-size:43px; }
+  .jewelry-intro .jewelry-signature { font-size:21px; margin-top:26px; }
+  .jewelry-hero-photo { width:92%; max-width:420px; margin-inline:auto; }
+  .gallery-switch a { font-size:12px; padding-block:15px; }
+  .gallery-switch a span { font-size:8px; letter-spacing:.06em; }
+  .jewelry-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:34px 14px; }
+  .jewelry-image { padding:5px; }
+  .jewelry-card .zoom-label { font-size:9px; padding-block:10px; }
+  .jewelry-caption { padding-top:13px; }
+  .jewelry-caption h3 { font-size:15px; line-height:1.8; }
+  .jewelry-caption p:not(.jewelry-category) { font-size:11px; }
+  .jewelry-caption .text-link { display:flex; align-items:center; font-size:10px; gap:6px; min-height:44px; }
+  .jewelry-caption .text-link>span { font-size:16px; }
+  .jewelry-filters { gap:7px; }
+  .jewelry-filters button { font-size:11px; padding:10px 12px; }
+  .collection-note { padding:16px; }
+  .collection-note p { font-size:11px; }
+  .collection-note p+p { font-size:10px; }
+  .order-story-grid { grid-template-columns:1fr; gap:35px; }
+  .order-story figure { width:100%; max-width:480px; margin-inline:auto; }
+  .jewelry-contact .button-row { flex-direction:column; gap:15px; }
+  .jewelry-dialog .dialog-bar { top:-14px; }
+  .jewelry-dialog .dialog-bar { flex-wrap:wrap; gap:10px; }
+  .jewelry-dialog .dialog-bar h2 { flex-basis:100%; }
+  .jewelry-dialog .dialog-image { height:51dvh; }
+  .jewelry-dialog-copy .button-row { flex-direction:column; align-items:stretch; }
+  .jewelry-copy-title { align-self:start; min-height:44px; }
+  .collection-promo { flex-wrap:wrap; gap:15px; padding:15px; }
+  .collection-promo img { width:70px; }
+  .collection-promo>div { flex:1; }
+  .collection-promo h3 { font-size:15px; }
+  .collection-promo p:not(.eyebrow) { font-size:10px; }
+  .collection-promo>span { font-size:11px; }
+}
